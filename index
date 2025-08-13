@@ -10,7 +10,7 @@
 
       // Android-Erkennung
       if (/android/i.test(ua)) {
-        window.location.href = "https://play.google.com/store/apps/details?id=com.skb.cablelife.android";
+        window.location.href = "https://play.google.com/store/apps/details?id=com.skb.cablelife.android&pcampaignid=web_share";
       }
       // iOS-Erkennung
       else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
