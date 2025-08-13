@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Weiterleitung zur Cablelife-App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    window.onload = function () {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Android-Erkennung
+      if (/android/i.test(ua)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.skb.cablelife.android";
+      }
+      // iOS-Erkennung
+      else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/at/app/cable-life/id6523434209";
+      }
+      // Fallback: Desktop oder unbekannt
+      else {
+        // Optional: andere Seite, Firmenhomepage, Info etc.
+        window.location.href = "https://cablelife.skb.group/";
+      }
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>
