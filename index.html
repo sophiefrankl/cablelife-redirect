@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Weiterleitung zur Cable Life App …</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var IOS_URL = "https://apps.apple.com/at/app/cable-life/id6523434209";
+      var ANDROID_URL = "https://play.google.com/store/apps/details?id=com.skb.cablelife.android";
+      var FALLBACK_URL = "https://cablelife.skb.group/";
+
+      function isAndroid(ua) {
+        return /android/i.test(ua);
+      }
+
+      function isIOS(ua) {
+        // iPhone/iPad/iPod + iPadOS 13+ (meldet sich teils als Mac)
+        var iOSUA = /iPad|iPhone|iPod/i.test(ua);
+        var iPadOS13Plus = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        return iOSUA || iPadOS13Plus;
+      }
+
+      function go(url) {
+        // replace verhindert "Zurück" zur Redirect-Seite
+        window.location.replace(url);
+      }
+
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (isAndroid(ua)) {
+        go(ANDROID_URL);
+      } else if (isIOS(ua)) {
+        go(IOS_URL);
+      } else {
+        go(FALLBACK_URL);
+      }
+
+      // Sicherheitsnetz: falls etwas blockiert wird → nach 3s Fallback
+      setTimeout(function(){ go(FALLBACK_URL); }, 3000);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
